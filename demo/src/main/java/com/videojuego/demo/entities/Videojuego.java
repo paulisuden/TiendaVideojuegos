@@ -17,7 +17,7 @@ public class Videojuego {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String titulo;
     private String descripcion;
     private String imagen;
