@@ -8,10 +8,7 @@ import com.videojuego.demo.services.ServicioVideojuego;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -78,10 +75,15 @@ public class ControladorVideojuego {
         try {
             model.addAttribute("categorias", svcCategoria.findAll());
             model.addAttribute("estudios", svcEstudio.findAll());
-            if (id == null || id == 0){
+            System.out.println("id formulario,"+ id);
+            if (id == 0){
+                System.out.println("if");
                 model.addAttribute("videojuego", new Videojuego());
             }else{
-                model.addAttribute("videojuego", svcVideojuego.findByIdAndActivo(id));
+                System.out.println("else");
+                Videojuego videojuego = svcVideojuego.findByIdAndActivo(id);
+                System.out.println(videojuego.getId());
+                model.addAttribute("videojuego", videojuego);
             }
             return "views/formulario/videojuego";
         }catch (Exception e){
@@ -113,7 +115,6 @@ public class ControladorVideojuego {
             return "error";
         }
     }
-
 
     @PostMapping("/guardarVideojuego")
     public String guardarVideojuego_( Videojuego videojuego, Model model) {

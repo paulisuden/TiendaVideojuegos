@@ -14,6 +14,7 @@
                     <div class="card-body">
                         <form th:action="@{/guardarVideojuego}" method="post" enctype="multipart/form-data"> <!-- para añadir la imagen -->
                            <div class="row g-3">
+                               <input type="hidden" name="id" th:value="${videojuego.id}"/>
                                <div class="form-group col-md-6">
                                    <label for="titulo">Título: </label>
                                    <input type="text" class="form-control" id="titulo" th:field="${videojuego.titulo}">
