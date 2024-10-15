@@ -39,12 +39,27 @@
     <header class="header-section">
         <nav th:replace="components/navbar :: nav_bar"></nav>
     </header>
+
+    <!-- Page info section -->
+    <section class="page-info-section set-bg" data-setbg="img/page-top-bg/1.jpg">
+        <div class="pi-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-6 text-white">
+                        <h2>Videojuegos</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Page info section -->
+
     <!-- Header section end -->
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="card-deck mt-5">
-                    <div th:replace="components/cards" :: card></div>
+                   <div th:replace="components/cards" :: card></div>
                 </div>
             </div>
         </div>
