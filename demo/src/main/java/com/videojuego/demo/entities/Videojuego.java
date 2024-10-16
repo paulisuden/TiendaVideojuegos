@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "videojuegos")
 @Getter
@@ -27,6 +29,8 @@ public class Videojuego {
     private String imagen;
     private float precio;
     private int stock;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaLanzamiento;
     private boolean activo = true;
     @ManyToOne(fetch = FetchType.EAGER)
