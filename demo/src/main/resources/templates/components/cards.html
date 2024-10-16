@@ -1,3 +1,5 @@
+<!-- Page section -->
+                            <!-- page-section recent-game-page spad -->
 <div th:fragment="card" class="card" th:each="videojuego : ${videojuegos}">
     <img th:src="${videojuego.imagen}" class="card-img-top" alt="videojuego imagen">
     <div class="card-body">
@@ -6,3 +8,4 @@
         <a th:href="@{detalle/{id}(id=${videojuego.id})}" class="btn btn-primary">Ver detalle</a>
     </div>
 </div>
+
