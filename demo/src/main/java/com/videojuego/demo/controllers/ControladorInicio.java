@@ -1,15 +1,12 @@
 package com.videojuego.demo.controllers;
 
 import com.videojuego.demo.entities.Videojuego;
-import com.videojuego.demo.services.ServicioCategoria;
-import com.videojuego.demo.services.ServicioEstudio;
 import com.videojuego.demo.services.ServicioVideojuego;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,6 +38,7 @@ public class ControladorInicio {
         try {
             Videojuego videojuego = this.svcVideojuego.findByIdAndActivo(id);
             model.addAttribute("videojuego", videojuego);
+            System.out.println(videojuego.getTitulo());
             return "views/inicio/detalle";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());

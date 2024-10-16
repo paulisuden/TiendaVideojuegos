@@ -2,8 +2,6 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
-
     <meta charset="UTF-8">
     <meta name="description" content="Game Warrior Template">
     <meta name="keywords" content="warrior, game, creative, html">
@@ -21,58 +19,69 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/animate.css" />
 
-
-    <title>Detalle videojuego</title>
+    <title>Detalle del Videojuego</title>
 </head>
 
 <body>
     <div th:replace="~{components/navbar :: nav_bar}"></div>
 
-    <section class="review-section review-dark spad set-bg" data-setbg="img/review-bg-2.jpg">
+    <section class="tournaments-section spad">
         <div class="container">
-            <div class="section-title text-white">
-            </div>
-            <div class="row text-white" th:object="${videojuego}">
-                <div class="col-lg-3 col-md-6">
-                    <div class="review-item">
-                        <div class="review-cover set-bg" data-setbg="img/review/1.jpg">
-                        </div>
-                        <div class="review-text">
-                            <img th:src="*{imagen}" class="card-img-top" alt="videojuego imagen">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title" th:text="*{titulo}">Título</h5>
-                                    <p class="card-text"><strong>Precio: </strong> <span th:text="*{precio}">1</span>
-                                    </p>
-                                    <p class="card-text" th:if="*{stock}">
-                                        <strong>Cantidad:</strong> <span th:text="*{stock}"></span>
-                                    </p>
-                                    <p class="card-text" th:unless="*{stock}">
-                                        <span class="text-danger"> No hay stock </span>
-                                    </p>
-                                    <p class="card-text"><strong>Categoría:</strong> <span
-                                            th:text="*{categoria.getNombre()}">1</span></p>
-                                    <p class="card-text"><strong>Estudio:</strong> <span
-                                            th:text="*{estudio.getNombre()}">1</span></p>
-                                    <p class="card-text"><strong>Fecha de lanzamiento:</strong> <span
-                                            th:text="*{fechaLanzamiento}">1</span></p>
-                                </div>
-                                <hr>
-                                <div class="card-body">
-                                    <p class="card-text" th:text="*{descripcion}"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <a th:href="@{/inicio}" class="btn btn-outline-dark">Volver</a>
+            <div class="row text-black" th:object="${videojuego}">
+                <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+                    <div class="card mb-4">
+                        <!-- Imagen del videojuego -->
+                        <img th:src="*{imagen}" class="card-img-top" alt="Imagen del videojuego" />
+
+                        <!-- Detalles del videojuego -->
+                        <div class="card-body">
+                            <h3 class="card-title" th:if="*{titulo}">
+                                <strong th:text="*{titulo}"></strong>
+                            </h3>
+
+                            <p class="card-text">
+                                <strong>Precio:</strong> $<span th:text="*{precio}"></span>
+                            </p>
+
+                            <!-- Mostrar cantidad si hay stock -->
+                            <p class="card-text" th:if="*{stock}">
+                                <strong>Stock disponible:</strong> <span th:text="*{stock}"></span>
+                            </p>
+
+                            <!-- Mostrar mensaje si no hay stock -->
+                            <p class="card-text text-danger" th:unless="*{stock}">
+                                <strong>No hay stock disponible</strong>
+                            </p>
+
+                            <p class="card-text">
+                                <strong>Categoría:</strong> <span th:text="*{categoria.getNombre()}"></span>
+                            </p>
+
+                            <p class="card-text">
+                                <strong>Estudio:</strong> <span th:text="*{estudio.getNombre()}"></span>
+                            </p>
+
+                            <p class="card-text">
+                                <strong>Fecha de lanzamiento:</strong> <span th:text="*{fechaLanzamiento}"></span>
+                            </p>
                         </div>
 
+                        <!-- Descripción del videojuego -->
+                        <hr>
+                        <div class="card-body">
+                            <h5 class="card-title">Descripción</h5>
+                            <p class="card-text" th:text="*{descripcion}"></p>
+                        </div>
+
+                        <!-- Botón de volver -->
+                        <div class="card-body text-center">
+                            <a th:href="@{/inicio}" class="btn btn-primary">Volver</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 
     <!-- Footer section -->
     <div th:replace="~{components/footer :: footer}"></div>
@@ -82,9 +91,3 @@
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/jquery.marquee.min.js"></script>
-    <script src="/js/main.js"></script>
-
-</body>
-
-</html>

@@ -204,6 +204,11 @@ ol {
 	-webkit-animation: loader 0.8s linear infinite;
 }
 
+.text-black {
+    color: #000 !important;
+}
+
+
 @keyframes loader {
 	0% {
 		-webkit-transform: rotate(0deg);
