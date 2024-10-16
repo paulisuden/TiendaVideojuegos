@@ -54,17 +54,31 @@
     </section>
     <!-- Page info section -->
 
-    <!-- Header section end -->
+
+    <section class="tournaments-section spad">
+        <div class="container">
+            <div class="tournament-title">Videojuegos</div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-deck mt-5">
+                        <div th:replace="components/cards" :: card></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="card-deck mt-5">
-                   <div th:replace="components/cards" :: card></div>
+                    <div th:replace="components/cards" :: card></div>
                 </div>
             </div>
         </div>
     </div>
-
+Header section end -->
 
     <!-- Footer section -->
     <footer class="footer-section">
