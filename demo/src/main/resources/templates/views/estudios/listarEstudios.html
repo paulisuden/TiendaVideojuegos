@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:href="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Inicio</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Game Warrior Template">
+    <meta name="keywords" content="warrior, game, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="shortcut icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+</head>
+
+<body>
+    <!-- Header section -->
+    <header class="header-section">
+        <nav th:replace="components/navbar :: nav_bar"></nav>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <h4>Estudios</h4>
+            </div>
+            <div class="col-4">
+                <a th:href="@{/estudios/formulario/0}" class="btn btn-success">Añadir estudio</a>
+            </div>
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="estudio : ${estudios}"
+                            th:class="${estudio.activo} ? 'table-success' : 'table-danger'">
+                            <td th:text="${estudio.id}"></td>
+                            <td th:text="${estudio.nombre}"></td>
+                            <td>
+                                <a th:if="${estudio.activo}" th:href="@{/estudios/formulario/{id}(id=${estudio.id})}"
+                                    class="btn btn-warning">Editar</a>
+                                <a th:if="${estudio.activo}"
+                                    th:href="@{/estudios/confirmarEliminar/{id}(id=${estudio.id})}"
+                                    class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Footer section -->
+    <footer class="footer-section">
+        <div class="container">
+            <ul class="footer-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="review.html">Games</a></li>
+                <li><a href="categories.html">Blog</a></li>
+                <li><a href="community.html">Forums</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
+                with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                    target="_blank">Colorlib</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+    </footer>
+    <!-- Footer section end -->
+
+
+    <!--====== Javascripts & Jquery ======-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.marquee.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
