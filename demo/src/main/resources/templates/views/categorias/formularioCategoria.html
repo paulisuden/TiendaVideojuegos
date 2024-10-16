@@ -2,8 +2,6 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
-
     <meta charset="UTF-8">
     <meta name="description" content="Game Warrior Template">
     <meta name="keywords" content="warrior, game, creative, html">
@@ -21,43 +19,43 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/animate.css" />
 
-
     <title>Agregar Categoria</title>
 </head>
 
 <body>
     <div th:replace="~{components/navbar :: nav_bar}"></div>
     <section class="tournaments-section spad">
-
         <div class="container">
             <div class="row mt-5">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <form th:action="@{/guardarCategoria}" method="post" enctype="multipart/form-data">
-                                <!-- para añadir la imagen -->
                                 <div class="row g-3">
                                     <input type="hidden" name="id" th:value="${categoria.id}" />
+
+                                    <!-- Nombre de la categoría -->
                                     <div class="form-group col-md-6">
                                         <label for="nombre">Nombre: </label>
                                         <input type="text" class="form-control" id="nombre"
-                                            th:field="${categoria.nombre}">
+                                            th:field="${categoria.nombre}" required>
                                     </div>
 
-
+                                    <!-- Botones -->
                                     <div class="row m-3">
                                         <div class="col-12 mb-2">
                                             <button class="btn btn-secondary btn-block" type="reset">Resetear
                                                 Formulario</button>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-12 mb-2">
                                             <button type="submit" class="btn btn-success btn-block">Guardar</button>
+                                        </div>
+                                        <div class="col-12">
+                                            <a href="/categorias" class="btn btn-danger btn-block">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>
-
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -68,7 +66,6 @@
     <!-- Footer section -->
     <div th:replace="~{components/footer :: footer}"></div>
     <!-- Footer section end -->
-
 
     <!--====== Javascripts & Jquery ======-->
     <script src="/js/jquery-3.2.1.min.js"></script>
