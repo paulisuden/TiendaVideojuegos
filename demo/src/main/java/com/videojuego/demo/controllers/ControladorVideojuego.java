@@ -39,14 +39,10 @@ public class ControladorVideojuego {
         try {
             model.addAttribute("categorias", svcCategoria.findAll());
             model.addAttribute("estudios", svcEstudio.findAll());
-            System.out.println("id formulario," + id);
             if (id == 0) {
-                System.out.println("if");
                 model.addAttribute("videojuego", new Videojuego());
             } else {
-                System.out.println("else");
                 Videojuego videojuego = svcVideojuego.findByIdAndActivo(id);
-                System.out.println(videojuego.getId());
                 model.addAttribute("videojuego", videojuego);
             }
             return "views/videojuegos/formularioVideojuego";
@@ -71,7 +67,6 @@ public class ControladorVideojuego {
     @GetMapping(value = "/eliminar/videojuego/{id}")
     public String eliminarVideojuego(Model model, @PathVariable("id") Long id) throws Exception {
         try {
-            System.out.println("llego eliminar");
             svcVideojuego.deleteById(id);
             return "redirect:/videojuegos";
         } catch (Exception e) {

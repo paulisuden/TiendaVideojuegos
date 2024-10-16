@@ -14,11 +14,11 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/owl.carousel.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/owl.carousel.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/animate.css" />
 
 
     <!--[if lt IE 9]>
@@ -35,9 +35,8 @@
         <div class="loader"></div>
     </div>
 
-    <header class="header-section">
-        <nav th:replace="~{components/navbar :: nav_bar}"></nav>
-    </header>
+    <div th:replace="~{components/navbar :: nav_bar}"></div>
+
 
     <!-- Page info section -->
     <section class=" page-info-section set-bg" data-setbg="img/page-top-bg/1.jpg">
@@ -53,8 +52,8 @@
     </section>
     <!-- Page info section -->
 
-
-    <section class="tournaments-section spad">
+    <section class="recent-game-section spad set-bg" data-setbg="img/recent-game-bg.png">
+        <!-- <section class="tournaments-section spad"> -->
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -66,48 +65,14 @@
         </div>
     </section>
 
-    <!--
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-deck mt-5">
-                    <div th:replace="components/cards" :: card></div>
-                </div>
-            </div>
-        </div>
-    </div>
-Header section end -->
-
-    <!-- Footer section -->
-    <footer class="footer-section">
-        <div class="container">
-            <ul class="footer-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="review.html">Games</a></li>
-                <li><a href="categories.html">Blog</a></li>
-                <li><a href="community.html">Forums</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <p class="copyright">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
-                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
-                is made
-                with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                    target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-        </div>
-    </footer>
-    <!-- Footer section end -->
-
+    <div th:replace="~{components/footer :: footer}"></div>
 
     <!--====== Javascripts & Jquery ======-->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.marquee.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.marquee.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>
