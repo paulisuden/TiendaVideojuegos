@@ -29,31 +29,31 @@ public class ControladorInicio {
         try {
             List<Videojuego> videojuegos = this.svcVideojuego.findAllByActivo();
             model.addAttribute("videojuegos", videojuegos);
-            return "views/inicio";
+            return "views/inicio/inicio";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "error";
         }
     }
 
-    @GetMapping("detalle/{id}")
+    @GetMapping("/detalle/{id}")
     public String detalleVideojuego(Model model, @PathVariable("id") long id) {
         try {
             Videojuego videojuego = this.svcVideojuego.findByIdAndActivo(id);
             model.addAttribute("videojuego", videojuego);
-            return "views/detalle";
+            return "views/inicio/detalle";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "error";
         }
     }
 
-    @GetMapping("busqueda")
+    @GetMapping("/busqueda")
     public String buscarVideojuego(Model model, @RequestParam(value = "titulo", required = false) String titulo) {
         try {
             List<Videojuego> videojuegos = this.svcVideojuego.findByTitle(titulo);
             model.addAttribute("videojuegos", videojuegos);
-            return "views/busqueda";
+            return "views/inicio/busqueda";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "error";
