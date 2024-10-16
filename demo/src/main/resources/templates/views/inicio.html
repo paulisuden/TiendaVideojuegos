@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Game Warrior Template</title>
@@ -35,13 +35,12 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Header section -->
     <header class="header-section">
-        <nav th:replace="components/navbar :: nav_bar"></nav>
+        <nav th:replace="~{components/navbar :: nav_bar}"></nav>
     </header>
 
     <!-- Page info section -->
-    <section class="page-info-section set-bg" data-setbg="img/page-top-bg/1.jpg">
+    <section class=" page-info-section set-bg" data-setbg="img/page-top-bg/1.jpg">
         <div class="pi-content">
             <div class="container">
                 <div class="row">
@@ -60,7 +59,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-deck mt-5">
-                        <div th:replace="components/cards" :: card></div>
+                        <div th:replace="~{components/cards :: card}"></div>
                     </div>
                 </div>
             </div>
@@ -89,9 +88,11 @@ Header section end -->
                 <li><a href="community.html">Forums</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <p class="copyright">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 Copyright &copy;
-                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
+                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                is made
                 with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
                     target="_blank">Colorlib</a>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->

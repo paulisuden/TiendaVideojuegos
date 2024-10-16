@@ -25,7 +25,7 @@ public class ControladorCategoria {
         try {
             List<Categoria> categorias = servicioCategoria.findAll();
             model.addAttribute("categorias", categorias);
-            return "views/categorias/crudCategorias";
+            return "views/categorias/listarCategorias";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "error";

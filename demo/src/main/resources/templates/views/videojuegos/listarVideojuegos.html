@@ -22,37 +22,47 @@
 </head>
 
 <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
     <!-- Header section -->
     <header class="header-section">
-        <nav th:replace="components/navbar :: nav_bar"></nav>
+        <nav th:replace="~{components/navbar :: nav_bar}"></nav>
     </header>
     <div class="container">
         <div class="row">
             <div class="col-3">
-                <h4>CRUD Categoria</h4>
+                <h4>Videojuegos</h4>
             </div>
             <div class="col-4">
-                <a th:href="@{/categorias/formulario/0}" class="btn btn-success">Añadir categoría</a>
+                <a th:href="@{/formulario/videojuego/0}" class="btn btn-success">Añadir videojuego</a>
             </div>
             <div class="col-12">
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Nombre</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="categoria : ${categorias}"
-                            th:class="${categoria.activo} ? 'table-success' : 'table-danger'">
-                            <td th:text="${categoria.id}"></td>
-                            <td th:text="${categoria.nombre}"></td>
+                        <tr th:each="videojuego : ${videojuegos}"
+                            th:class="${videojuego.activo} ? 'table-success' : 'table-danger'">
+                            <td th:text="${videojuego.id}"></td>
+                            <td th:text="${videojuego.titulo}"></td>
+                            <td th:text="${videojuego.precio}"></td>
+                            <td th:text="${videojuego.stock}"></td>
                             <td>
-                                <a th:if="${categoria.activo}"
-                                    th:href="@{/categorias/formulario/{id}(id=${categoria.id})}"
+                                <a th:if="${videojuego.activo}"
+                                    th:href="@{/formulario/videojuego/{id}(id=${videojuego.id})}"
                                     class="btn btn-warning">Editar</a>
-                                <a th:if="${categoria.activo}"
-                                    th:href="@{/categorias/confirmarEliminar/{id}(id=${categoria.id})}"
+                                <a th:if="${videojuego.activo}"
+                                    th:href="@{/confirmacionEliminar/videojuego/{id}(id=${videojuego.id})}"
                                     class="btn btn-danger">Eliminar</a>
                             </td>
                         </tr>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
     <title>Detalle videojuego</title>
     <meta charset="UTF-8">
@@ -30,7 +31,7 @@
 <body>
     <!-- Header section -->
     <header class="header-section">
-        <nav th:replace="components/navbar :: nav_bar"></nav>
+        <nav th:replace="~{components/navbar :: nav_bar}"></nav>
     </header>
 
 
@@ -50,16 +51,20 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title" th:text="*{titulo}">Título</h5>
-                                    <p class="card-text"><strong>Precio: </strong> <span th:text="*{precio}">1</span></p>
+                                    <p class="card-text"><strong>Precio: </strong> <span th:text="*{precio}">1</span>
+                                    </p>
                                     <p class="card-text" th:if="*{stock}">
                                         <strong>Cantidad:</strong> <span th:text="*{stock}"></span>
                                     </p>
                                     <p class="card-text" th:unless="*{stock}">
                                         <span class="text-danger"> No hay stock </span>
                                     </p>
-                                    <p class="card-text"><strong>Categoría:</strong> <span th:text="*{categoria.getNombre()}">1</span></p>
-                                    <p class="card-text"><strong>Estudio:</strong> <span th:text="*{estudio.getNombre()}">1</span></p>
-                                    <p class="card-text"><strong>Fecha de lanzamiento:</strong> <span th:text="*{fechaLanzamiento}">1</span></p>
+                                    <p class="card-text"><strong>Categoría:</strong> <span
+                                            th:text="*{categoria.getNombre()}">1</span></p>
+                                    <p class="card-text"><strong>Estudio:</strong> <span
+                                            th:text="*{estudio.getNombre()}">1</span></p>
+                                    <p class="card-text"><strong>Fecha de lanzamiento:</strong> <span
+                                            th:text="*{fechaLanzamiento}">1</span></p>
                                 </div>
                                 <hr>
                                 <div class="card-body">
@@ -96,7 +101,7 @@
                 Copyright &copy;
                 <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
                 with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                                                            target="_blank">Colorlib</a>
+                    target="_blank">Colorlib</a>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
         </div>
@@ -111,4 +116,5 @@
     <script src="js/main.js"></script>
 
 </body>
+
 </html>
