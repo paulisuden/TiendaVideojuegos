@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+
 @Entity
-@Table( name = "videojuegos")
+@Table(name = "videojuegos")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,6 +21,9 @@ public class Videojuego {
     private Long id;
     private String titulo;
     private String descripcion;
+
+    @Lob
+    @Column(length = 1024)
     private String imagen;
     private float precio;
     private int stock;
