@@ -4,49 +4,47 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 
-import com.videojuego.demo.entities.Categoria;
-import com.videojuego.demo.services.ServicioCategoria;
-
+import com.videojuego.demo.entities.Estudio;
+import com.videojuego.demo.entities.Estudio;
+import com.videojuego.demo.services.ServicioEstudio;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.ui.Model;
 
 @Controller
-public class ControladorCategoria {
-
+public class ControladorEstudio {
     @Autowired
-    private ServicioCategoria servicioCategoria;
+    private ServicioEstudio servicioEstudio;
 
-    @GetMapping("/categorias")
-    public String categorias(Model model) {
-
+    @GetMapping("/estudios")
+    public String estudios(Model model) {
         try {
-            List<Categoria> categorias = servicioCategoria.findAll();
-            model.addAttribute("categorias", categorias);
-            return "views/categorias/crudCategorias";
+            List<Estudio> estudios = servicioEstudio.findAll();
+            model.addAttribute("estudios", estudios);
+            return "views/estudios/listarEstudios";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "error";
         }
     }
 
-    @GetMapping("/categorias/formulario/{id}")
+    @GetMapping("/estudios/formulario/{id}")
     public String formularioCategoria(
             Model model,
             @PathVariable("id") Long id) {
         try {
-            Categoria categoria = null;
-            // Creando categoria
+            Estudio estudio = null;
+            // Creando estudio
             if (id == 0)
-                categoria = new Categoria();
+                estudio = new Estudio();
 
-            // Categoria ya existente
+            // Estudio ya existente
             else
-                categoria = servicioCategoria.findById(id);
-            model.addAttribute("categoria", categoria);
-            return "views/categorias/formularioCategoria";
+                estudio = servicioEstudio.findById(id);
+            model.addAttribute("estudio", estudio);
+            return "views/estudios/formularioEstudio";
 
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
@@ -54,46 +52,46 @@ public class ControladorCategoria {
         }
     }
 
-    @GetMapping("/categorias/confirmarEliminar/{id}")
+    @GetMapping("/estudios/confirmarEliminar/{id}")
     public String confirmarEliminarCategoria(
             Model model,
             @PathVariable("id") Long id) {
         try {
-            Categoria categoria = servicioCategoria.findById(id);
-            model.addAttribute("categoria", categoria);
-            return "views/categorias/confirmacionEliminar";
+            Estudio estudio = servicioEstudio.findById(id);
+            model.addAttribute("estudio", estudio);
+            return "views/estudios/confirmacionEliminar";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "error";
         }
     }
 
-    @GetMapping("/categorias/eliminar/{id}")
+    @GetMapping("/estudios/eliminar/{id}")
     public String eliminarCategoria(
             Model model,
             @PathVariable("id") Long idCategoria) {
         try {
-            servicioCategoria.deleteById(idCategoria);
-            return "redirect:/categorias";
+            servicioEstudio.deleteById(idCategoria);
+            return "redirect:/estudios";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "error";
         }
     }
 
-    @PostMapping("/guardarCategoria")
-    public String guardarCategoria_(
-            Categoria categoria,
+    @PostMapping("/guardarEstudio")
+    public String guardarEstudio_(
+            Estudio estudio,
             Model model) {
 
         try {
-            Long id = categoria.getId();
+            Long id = estudio.getId();
             if (id == null || id == 0) {
-                servicioCategoria.saveOne(categoria);
+                servicioEstudio.saveOne(estudio);
             } else {
-                servicioCategoria.updateOne(categoria, categoria.getId());
+                servicioEstudio.updateOne(estudio, estudio.getId());
             }
-            return "redirect:/categorias";
+            return "redirect:/estudios";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "error";
