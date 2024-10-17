@@ -1,5 +1,6 @@
 package com.videojuego.demo.entities;
 
+import com.videojuego.demo.validationImage.ImagenJpg;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
@@ -31,6 +32,7 @@ public class Videojuego {
     @Size(min = 5, max = 1000, message = "La descripción debe tener entre 5 a 1000 caracteres")
     private String descripcion;
 
+    @ImagenJpg(message = "El link de la imagen debe terminar con '.jpg'")
     @Lob //Large Object
     @Column(length = 1024)
     private String imagen;
