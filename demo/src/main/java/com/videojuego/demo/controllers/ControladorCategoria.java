@@ -1,17 +1,18 @@
 package com.videojuego.demo.controllers;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-
 import com.videojuego.demo.entities.Categoria;
 import com.videojuego.demo.services.ServicioCategoria;
-
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.ui.Model;
+
+import java.util.List;
 
 @Controller
 public class ControladorCategoria {
@@ -83,11 +84,15 @@ public class ControladorCategoria {
 
     @PostMapping("/guardarCategoria")
     public String guardarCategoria_(
-            Categoria categoria,
+            @Valid @ModelAttribute Categoria categoria,
+            BindingResult result,
             Model model) {
 
         try {
             Long id = categoria.getId();
+            if(result.hasErrors()){
+                return "views/categorias/formularioCategoria";
+            }
             if (id == null || id == 0) {
                 servicioCategoria.saveOne(categoria);
             } else {

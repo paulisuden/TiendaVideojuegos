@@ -1,17 +1,18 @@
 package com.videojuego.demo.controllers;
 
-import java.util.List;
-
+import com.videojuego.demo.entities.Estudio;
+import com.videojuego.demo.services.ServicioEstudio;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
-import com.videojuego.demo.entities.Estudio;
-import com.videojuego.demo.entities.Estudio;
-import com.videojuego.demo.services.ServicioEstudio;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class ControladorEstudio {
@@ -81,11 +82,15 @@ public class ControladorEstudio {
 
     @PostMapping("/guardarEstudio")
     public String guardarEstudio_(
-            Estudio estudio,
+            @Valid @ModelAttribute Estudio estudio,
+            BindingResult result,
             Model model) {
 
         try {
             Long id = estudio.getId();
+            if (result.hasErrors()){
+                return "views/estudios/formularioEstudio";
+            }
             if (id == null || id == 0) {
                 servicioEstudio.saveOne(estudio);
             } else {

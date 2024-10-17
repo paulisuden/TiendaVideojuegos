@@ -35,8 +35,8 @@
                                     <input type="hidden" name="id" th:value="${estudio.id}" />
                                     <div class="form-group col-md-6">
                                         <label for="nombre">Nombre: </label>
-                                        <input type="text" class="form-control" id="nombre" th:field="${estudio.nombre}"
-                                            required>
+                                        <input type="text" class="form-control" id="nombre" th:field="${estudio.nombre}">
+                                        <div class="text-danger" th:errors="${estudio.nombre}"></div>
                                     </div>
 
                                     <div class="row m-3">

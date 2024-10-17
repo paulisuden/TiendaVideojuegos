@@ -38,14 +38,14 @@
                                     <div class="form-group col-md-6">
                                         <label for="titulo">Título: </label>
                                         <input type="text" class="form-control" id="titulo"
-                                            th:field="${videojuego.titulo}" required>
+                                            th:field="${videojuego.titulo}" >
+                                        <div class="text-danger" th:errors="${videojuego.titulo}"></div>
                                     </div>
 
                                     <!-- Estudio -->
                                     <div class="form-group col-md-6">
                                         <label for="estudio">Estudio: </label>
-                                        <select class="form-control" id="estudio" th:field="${videojuego.estudio}"
-                                            required>
+                                        <select class="form-control" id="estudio" th:field="${videojuego.estudio}">
                                             <option value="" disabled selected>Seleccione un estudio</option>
                                             <option th:each="estudio: ${estudios}" th:value="${estudio.id}"
                                                 th:text="${estudio.nombre}"></option>
@@ -55,8 +55,7 @@
                                     <!-- Categoría -->
                                     <div class="form-group col-md-6">
                                         <label for="categoria">Categoría: </label>
-                                        <select class="form-control" id="categoria" th:field="${videojuego.categoria}"
-                                            required>
+                                        <select class="form-control" id="categoria" th:field="${videojuego.categoria}">
                                             <option value="" disabled selected>Seleccione una categoría</option>
                                             <option th:each="categoria: ${categorias}" th:value="${categoria.id}"
                                                 th:text="${categoria.nombre}"></option>
@@ -68,28 +67,31 @@
                                         <label for="imagen" class="form-label">Imagen URL: </label>
                                         <input type="url" class="form-control" id="imagen"
                                             th:field="${videojuego.imagen}" required
-                                            placeholder="https://example.com/imagen.jpg">
+                                               placeholder="https://example.com/imagen.jpg">
                                     </div>
 
                                     <!-- Descripción -->
                                     <div class="form-group col-md-12">
                                         <label for="descripcion">Descripción: </label>
                                         <textarea class="form-control" id="descripcion"
-                                            th:field="${videojuego.descripcion}" required></textarea>
+                                            th:field="${videojuego.descripcion}" ></textarea>
+                                        <div class="text-danger" th:errors="${videojuego.descripcion}"></div>
                                     </div>
 
                                     <!-- Precio -->
                                     <div class="form-group col-md-3">
                                         <label for="precio">Precio: </label>
                                         <input type="number" class="form-control" id="precio"
-                                            th:field="${videojuego.precio}" required>
+                                            th:field="${videojuego.precio}" >
+                                        <div class="text-danger" th:errors="${videojuego.precio}"></div>
                                     </div>
 
                                     <!-- Stock -->
                                     <div class="form-group col-md-3">
                                         <label for="stock">Stock: </label>
                                         <input type="number" class="form-control" id="stock"
-                                            th:field="${videojuego.stock}" required>
+                                            th:field="${videojuego.stock}" >
+                                        <div class="text-danger" th:errors="${videojuego.stock}"></div>
                                     </div>
 
                                     <!-- Fecha de lanzamiento -->
@@ -97,6 +99,7 @@
                                         <label for="fechaLanzamiento">Fecha de lanzamiento: </label>
                                         <input type="date" class="form-control" id="fechaLanzamiento"
                                             th:field="${videojuego.fechaLanzamiento}" required />
+                                        <div class="text-danger" th:errors="${videojuego.fechaLanzamiento}"></div>
                                     </div>
 
                                     <!-- Botones -->

@@ -4,14 +4,17 @@ import com.videojuego.demo.entities.Videojuego;
 import com.videojuego.demo.services.ServicioCategoria;
 import com.videojuego.demo.services.ServicioEstudio;
 import com.videojuego.demo.services.ServicioVideojuego;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
-import java.util.List;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class ControladorVideojuego {
@@ -76,11 +79,16 @@ public class ControladorVideojuego {
     }
 
     @PostMapping("/guardarVideojuego")
-    public String guardarVideojuego_(Videojuego videojuego, Model model) {
+    public String guardarVideojuego_(@Valid @ModelAttribute("videojuego") Videojuego videojuego, BindingResult result, Model model) {
         try {
             Long id = videojuego.getId();
+            if(result.hasErrors()){
+                model.addAttribute("categorias",this.svcCategoria.findAll());
+                model.addAttribute("estudios",this.svcEstudio.findAll());
+                return "views/videojuegos/formularioVideojuego";
+            }
+
             if (id == null || id == 0) {
-                videojuego.setFechaLanzamiento(new Date());
                 svcVideojuego.saveOne(videojuego);
             } else {
                 svcVideojuego.updateOne(videojuego, videojuego.getId());
