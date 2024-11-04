@@ -8,7 +8,7 @@ FROM openjdk:21-slim
 COPY target/demo-0.0.1-SNAPSHOT.jar demo.jar
 
 # Expone el puerto 3000
-#EXPOSE 3000
+EXPOSE 8080
 
 # Define el comando de inicio para ejecutar la aplicación
 CMD ["java", "-jar", "/demo.jar"]
