@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:href="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Inicio</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Game Warrior Template">
+    <meta name="keywords" content="warrior, game, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="shortcut icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/owl.carousel.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/animate.css" />
+</head>
+
+<body>
+
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <div th:replace="~{components/navbar :: nav_bar}"></div>
+    <section class="rpage-section recent-game-page spad">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <h4>Categorias</h4>
+                </div>
+                <div class="col-4">
+                    <a th:href="@{/categorias/formulario/0}" class="btn btn-success">Añadir categoría</a>
+                </div>
+                <div class="col-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="categoria : ${categorias}"
+                                th:class="${categoria.activo} ? 'table-success' : 'table-danger'">
+                                <td th:text="${categoria.id}"></td>
+                                <td th:text="${categoria.nombre}"></td>
+                                <td>
+                                    <a th:if="${categoria.activo}"
+                                        th:href="@{/categorias/formulario/{id}(id=${categoria.id})}"
+                                        class="btn btn-warning">Editar</a>
+                                    <a th:if="${categoria.activo}"
+                                        th:href="@{/categorias/confirmarEliminar/{id}(id=${categoria.id})}"
+                                        class="btn btn-danger">Eliminar</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer section -->
+    <div th:replace="~{components/footer :: footer}"></div>
+    <!-- Footer section end -->
+
+
+    <!--====== Javascripts & Jquery ======-->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.marquee.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

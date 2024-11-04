@@ -1,0 +1,17 @@
+com\videojuego\demo\validationImage\ImagenJpg.class
+com\videojuego\demo\entities\Categoria.class
+com\videojuego\demo\entities\Videojuego.class
+com\videojuego\demo\entities\Estudio.class
+com\videojuego\demo\controllers\ControladorEstudio.class
+com\videojuego\demo\controllers\ControladorInicio.class
+com\videojuego\demo\DemoApplication.class
+com\videojuego\demo\services\ServicioCategoria.class
+com\videojuego\demo\services\ServicioEstudio.class
+com\videojuego\demo\repositories\RepositorioCategoria.class
+com\videojuego\demo\services\ServicioBase.class
+com\videojuego\demo\repositories\RepositorioEstudio.class
+com\videojuego\demo\validationImage\ImagenJpgValidator.class
+com\videojuego\demo\repositories\RepositorioVideojuego.class
+com\videojuego\demo\services\ServicioVideojuego.class
+com\videojuego\demo\controllers\ControladorCategoria.class
+com\videojuego\demo\controllers\ControladorVideojuego.class

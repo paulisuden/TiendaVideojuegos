@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Game Warrior Template">
+    <meta name="keywords" content="warrior, game, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="shortcut icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/owl.carousel.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/animate.css" />
+
+    <title>Agregar Videojuego</title>
+</head>
+
+<body>
+    <div th:replace="~{components/navbar :: nav_bar}"></div>
+    <section class="tournaments-section spad">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form th:action="@{/guardarVideojuego}" method="post" enctype="multipart/form-data">
+                                <div class="row g-3">
+                                    <input type="hidden" name="id" th:value="${videojuego.id}" />
+
+                                    <!-- Título -->
+                                    <div class="form-group col-md-6">
+                                        <label for="titulo">Título: </label>
+                                        <input type="text" class="form-control" id="titulo"
+                                            th:field="${videojuego.titulo}" >
+                                        <div class="text-danger" th:errors="${videojuego.titulo}"></div>
+                                    </div>
+
+                                    <!-- Estudio -->
+                                    <div class="form-group col-md-6">
+                                        <label for="estudio">Estudio: </label>
+                                        <select class="form-control" id="estudio" th:field="${videojuego.estudio}">
+                                            <option value="" disabled selected>Seleccione un estudio</option>
+                                            <option th:each="estudio: ${estudios}" th:value="${estudio.id}"
+                                                th:text="${estudio.nombre}"></option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Categoría -->
+                                    <div class="form-group col-md-6">
+                                        <label for="categoria">Categoría: </label>
+                                        <select class="form-control" id="categoria" th:field="${videojuego.categoria}">
+                                            <option value="" disabled selected>Seleccione una categoría</option>
+                                            <option th:each="categoria: ${categorias}" th:value="${categoria.id}"
+                                                th:text="${categoria.nombre}"></option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Imagen URL -->
+                                    <div class="form-group col-md-12">
+                                        <label for="imagen" class="form-label">Imagen URL: </label>
+                                        <input type="url" class="form-control" id="imagen"
+                                            th:field="${videojuego.imagen}" required
+                                               placeholder="https://example.com/imagen.jpg">
+                                        <div class="text-danger" th:errors="${videojuego.imagen}"></div>
+                                    </div>
+
+                                    <!-- Descripción -->
+                                    <div class="form-group col-md-12">
+                                        <label for="descripcion">Descripción: </label>
+                                        <textarea class="form-control" id="descripcion"
+                                            th:field="${videojuego.descripcion}" ></textarea>
+                                        <div class="text-danger" th:errors="${videojuego.descripcion}"></div>
+                                    </div>
+
+                                    <!-- Precio -->
+                                    <div class="form-group col-md-3">
+                                        <label for="precio">Precio: </label>
+                                        <input type="number" class="form-control" id="precio"
+                                            th:field="${videojuego.precio}" >
+                                        <div class="text-danger" th:errors="${videojuego.precio}"></div>
+                                    </div>
+
+                                    <!-- Stock -->
+                                    <div class="form-group col-md-3">
+                                        <label for="stock">Stock: </label>
+                                        <input type="number" class="form-control" id="stock"
+                                            th:field="${videojuego.stock}" >
+                                        <div class="text-danger" th:errors="${videojuego.stock}"></div>
+                                    </div>
+
+                                    <!-- Fecha de lanzamiento -->
+                                    <div class="form-group col-md-3">
+                                        <label for="fechaLanzamiento">Fecha de lanzamiento: </label>
+                                        <input type="date" class="form-control" id="fechaLanzamiento"
+                                            th:field="${videojuego.fechaLanzamiento}" required />
+                                        <div class="text-danger" th:errors="${videojuego.fechaLanzamiento}"></div>
+                                    </div>
+
+                                    <!-- Botones -->
+                                    <div class="row m-3">
+                                        <div class="col-12 mb-2">
+                                            <button class="btn btn-secondary btn-block" type="reset">Resetear
+                                                Formulario</button>
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <button type="submit" class="btn btn-success btn-block">Guardar</button>
+                                        </div>
+                                        <div class="col-12">
+                                            <a href="/videojuegos" class="btn btn-danger btn-block">Cancelar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer section -->
+    <div th:replace="~{components/footer :: footer}"></div>
+    <!-- Footer section end -->
+
+    <!--====== Javascripts & Jquery ======-->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.marquee.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

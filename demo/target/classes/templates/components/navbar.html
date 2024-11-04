@@ -1,0 +1,26 @@
+<header th:fragment="nav_bar" class="header-section">
+    <div class="container">
+        <a class="site-logo" th:href="@{/inicio}">
+            <img src="/img/logo.png" alt="">
+        </a>
+        <div class="nav-switch">
+            <i class="fa fa-bars"></i>
+        </div>
+        <nav class="main-menu">
+            <ul>
+                <li>
+                    <a class="nav-link active" aria-current="page" th:href="@{/inicio}">Inicio</a>
+                </li>
+                <li>
+                    <a class="nav-link active" aria-current="page" th:href="@{/videojuegos}">Juegos</a>
+                </li>
+                <li>
+                    <a class="nav-link active" aria-current="page" th:href="@{/categorias}">Categorías</a>
+                </li>
+                <li>
+                    <a class="nav-link active" aria-current="page" th:href="@{/estudios}">Estudios</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
